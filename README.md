@@ -15,36 +15,12 @@
 - [登录界面css样式待优化]
 - [餐厅css样式待优化]
 - [管理员端功能待完善]
-- []
+- [点菜组件尚未接入]
 
-### [版本号] - [发布日期]
-#### 新增
-- [新增功能或特性1]
-- [新增功能或特性2]
-- [新增功能或特性3]
+项目压缩文件已同步GitHub仓库，点击查
 
-#### 修改
-- [修改内容或改进1]
-- [修改内容或改进2]
-- [修改内容或改进3]
-
-#### 修复
-- [修复的Bug1]
-- [修复的Bug2]
-- [修复的Bug3]
-
-## 贡献者
-- [贡献者1]
-- [贡献者2]
-- [贡献者3]
-
-## 已知问题
-- [已知问题1]
-- [已知问题2]
-- [已知问题3]
-
-## 联系我们
-如果有任何问题或建议，请通过以下方式联系我们：
+## 联系我
+如果有任何问题或建议，请通过以下方式联系我：
 - 邮箱: [crod1441@163.com]
 - GitHub: [Lonely-wind](https://github.com/Lonely-wind)
 
@@ -55,6 +31,6 @@
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNzY5MTkzMTk0LDEwMTI1MDY3NzksLTI2OT
-gwMjY0NF19
+eyJoaXN0b3J5IjpbMjEyNzQ4NjQyMCwxMDEyNTA2Nzc5LC0yNj
+k4MDI2NDRdfQ==
 -->
