@@ -11,10 +11,11 @@
 #### 修改
 - [修改了**admin**表的整体结构，添加了窗口号**windowID**]
 - [整体修改了数据库的连接方式，目前整个项目采用了统一标准]
-#### 修复
-- [登录界面css样式待]
-- [修复的Bug2]
-- [修复的Bug3]
+#### 仍存在问题
+- [登录界面css样式待优化]
+- [餐厅css样式待优化]
+- [管理员端功能待完善]
+- []
 
 ### [版本号] - [发布日期]
 #### 新增
@@ -54,6 +55,6 @@
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTY5MDk1ODc5NCwxMDEyNTA2Nzc5LC0yNj
-k4MDI2NDRdfQ==
+eyJoaXN0b3J5IjpbNzY5MTkzMTk0LDEwMTI1MDY3NzksLTI2OT
+gwMjY0NF19
 -->
