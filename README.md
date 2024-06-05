@@ -1,8 +1,8 @@
-# 版本更新说明
+# NKcanteen版本更新说明
 
 ## 版本历史
 
-### [版本号] - [发布日期]
+### [version 1.0] - []
 #### 新增
 - [新增功能或特性1]
 - [新增功能或特性2]
@@ -46,10 +46,10 @@
 
 ## 联系我们
 如果有任何问题或建议，请通过以下方式联系我们：
-- 邮箱: [sd]()
+- 邮箱: [crod1441@163.com]
 - GitHub: [Lonely-wind](https://github.com/Lonely-wind)
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbOTQ4NTg2ODEsLTI2OTgwMjY0NF19
+eyJoaXN0b3J5IjpbMTE2MDMxOTMxMywtMjY5ODAyNjQ0XX0=
 -->
