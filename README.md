@@ -2,14 +2,14 @@
 
 ## 版本历史
 
-### [version 1.0] - []
+### [version 1.0] - [2024/6/4]
 #### 新增
-- [新增功能或特性1]
-- [新增功能或特性2]
-- [新增功能或特性3]
+- [增加用户登录界面]
+- [增加管理员登录界面]
+- [增加身份选择界面]
 
 #### 修改
-- [修改内容或改进1]
+- []
 - [修改内容或改进2]
 - [修改内容或改进3]
 
@@ -56,6 +56,6 @@
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTY4MDk2NzMyNCwxMDEyNTA2Nzc5LC0yNj
+eyJoaXN0b3J5IjpbMTU0MTA4ODI0NCwxMDEyNTA2Nzc5LC0yNj
 k4MDI2NDRdfQ==
 -->
