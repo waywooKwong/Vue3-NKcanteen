@@ -3,7 +3,7 @@
 ## 版本历史
 
 ### [版本号] - [发布日期]
-#### <font color=#0099ff size=7 face="黑体">color=#0099ff size=72 face="黑体"</font>
+#### 新增
 - [新增功能或特性1]
 - [新增功能或特性2]
 - [新增功能或特性3]
@@ -46,10 +46,10 @@
 
 ## 联系我们
 如果有任何问题或建议，请通过以下方式联系我们：
-- 邮箱: [your-email@example.com]
-- GitHub: [yourusername](https://github.com/yourusername)
+- 邮箱: [sd]()
+- GitHub: [Lonely-wind](https://github.com/Lonely-wind)
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTEwMjg4MjE4MywtMjY5ODAyNjQ0XX0=
+eyJoaXN0b3J5IjpbOTQ4NTg2ODEsLTI2OTgwMjY0NF19
 -->
