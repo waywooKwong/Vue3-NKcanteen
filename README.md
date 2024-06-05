@@ -17,7 +17,7 @@
 - [管理员端功能待完善]
 - [点菜组件尚未接入]
 
-项目压缩文件已同步GitHub仓库，点击查
+项目压缩文件已同步GitHub仓库，[点击查看](https://github.com/waywooKwong/NKcanteen/blob/lonelywind/vue_version_1.rar)
 
 ## 联系我
 如果有任何问题或建议，请通过以下方式联系我：
@@ -31,6 +31,6 @@
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMjEyNzQ4NjQyMCwxMDEyNTA2Nzc5LC0yNj
+eyJoaXN0b3J5IjpbLTQzNzk5MDg2MSwxMDEyNTA2Nzc5LC0yNj
 k4MDI2NDRdfQ==
 -->
