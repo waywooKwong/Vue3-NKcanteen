@@ -9,9 +9,7 @@
 - [增加身份选择界面]
 
 #### 修改
-- []
-- [修改内容或改进2]
-- [修改内容或改进3]
+- [修改了**admin**表的整体结构，we]
 
 #### 修复
 - [修复的Bug1]
@@ -56,6 +54,6 @@
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTU0MTA4ODI0NCwxMDEyNTA2Nzc5LC0yNj
-k4MDI2NDRdfQ==
+eyJoaXN0b3J5IjpbODg2NTk5MzUxLDEwMTI1MDY3NzksLTI2OT
+gwMjY0NF19
 -->
