@@ -9,10 +9,10 @@
 - [增加身份选择界面]
 
 #### 修改
-- [修改了**admin**表的整体结构，we]
-
+- [修改了**admin**表的整体结构，添加了窗口号**windowID**]
+- [整体修改了数据库的连接方式，目前整个项目采用了统一标准]
 #### 修复
-- [修复的Bug1]
+- [登录界面css样式待]
 - [修复的Bug2]
 - [修复的Bug3]
 
@@ -54,6 +54,6 @@
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbODg2NTk5MzUxLDEwMTI1MDY3NzksLTI2OT
-gwMjY0NF19
+eyJoaXN0b3J5IjpbLTY5MDk1ODc5NCwxMDEyNTA2Nzc5LC0yNj
+k4MDI2NDRdfQ==
 -->
