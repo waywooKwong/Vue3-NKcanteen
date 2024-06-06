@@ -19,7 +19,7 @@
   - 接受菜品点购，提供备餐时长
   - 接收用户反馈信息
 
-  <img src="C:\Users\weihua\AppData\Roaming\Typora\typora-user-images\image-20240606210221801.png" alt="image-20240606210221801" style="zoom:30%;" />
+  <img src="structure.png" alt="image-20240606210221801" style="zoom:30%;" />
 
 基本分工完成各自部分
 -------
