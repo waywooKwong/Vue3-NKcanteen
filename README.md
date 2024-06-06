@@ -19,7 +19,7 @@
 
 项目压缩文件已同步GitHub仓库，[点击查看](https://github.com/waywooKwong/NKcanteen/blob/lonelywind/vue_version_1.rar)
 
-## 版本历史
+***
 
 ### [version 1.1] - [预计2024/6/7]
 #### 新增
@@ -45,6 +45,6 @@
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE3MTUyMjQ3MzYsLTQzNzk5MDg2MSwxMD
-EyNTA2Nzc5LC0yNjk4MDI2NDRdfQ==
+eyJoaXN0b3J5IjpbMjAyMjY0Nzk0MiwtNDM3OTkwODYxLDEwMT
+I1MDY3NzksLTI2OTgwMjY0NF19
 -->
