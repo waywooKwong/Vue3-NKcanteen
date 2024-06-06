@@ -31,7 +31,7 @@
 #### 仍存在问题
 - [待定]
 
-项目压缩文件已同步GitHub仓库，[点击查看](https://github.com/waywooKwong/NKcanteen/blob/lonelywind/vue_version_1.rar)
+项目压缩文件已同步GitHub仓库（预计2024/6/7更新），[点击查看](https://github.com/waywooKwong/NKcanteen/blob/lonelywind/vue_version_1.rar)
 
 ## 联系我
 如果有任何问题或建议，请通过以下方式联系我：
@@ -45,6 +45,6 @@
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMjAyMjY0Nzk0MiwtNDM3OTkwODYxLDEwMT
-I1MDY3NzksLTI2OTgwMjY0NF19
+eyJoaXN0b3J5IjpbNDg2MDQ4MjIzLDIwMjI2NDc5NDIsLTQzNz
+k5MDg2MSwxMDEyNTA2Nzc5LC0yNjk4MDI2NDRdfQ==
 -->
