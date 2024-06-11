@@ -28,42 +28,42 @@ export default {
   data() {
     return {
       floors: [],
-    };
+    }
   },
   computed: {
     canteen() {
-      return this.$route.query.canteen;
+      return this.$route.query.canteen
     },
   },
   watch: {
     canteen: {
       immediate: true,
       handler(newCanteen) {
-        this.updateFloors(newCanteen);
+        this.updateFloors(newCanteen)
       },
     },
   },
   methods: {
     updateFloors(canteen) {
-      if (canteen === "食堂A") {
-        this.floors = ["1楼", "2楼", "3楼"];
-      } else if (canteen === "食堂B") {
-        this.floors = ["1楼", "2楼"];
-      } else if (canteen === "食堂C") {
-        this.floors = ["1楼"];
+      if (canteen === '食堂A') {
+        this.floors = ['1楼', '2楼', '3楼']
+      } else if (canteen === '食堂B') {
+        this.floors = ['1楼', '2楼']
+      } else if (canteen === '食堂C') {
+        this.floors = ['1楼']
       }
     },
     selectFloor(floor) {
       this.$router.push({
-        path: "/selectopeate",
+        path: '/selectopeate',
         query: { canteen: this.canteen, floor },
-      });
+      })
     },
   },
-};
+}
 </script>
 
-<style src = "src/assets/seat.css" scoped></style>
+<style src="src/assets/seat.css" scoped></style>
 <!-- <style scoped>
 #backbody {
   font-family: Avenir, Helvetica, Arial, sans-serif;

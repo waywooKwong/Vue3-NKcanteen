@@ -1,29 +1,31 @@
-# vue_register
+# 项目日志
 
-This template should help get you started developing with Vue 3 in Vite.
+## 进程记录
 
-## Recommended IDE Setup
+1. 讨论项目选题 20240515
 
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur).
+2. 分工确定任务 20240520
 
-## Customize configuration
+3. 基本完成分块组件设计 v1.0 20240604
 
-See [Vite Configuration Reference](https://vitejs.dev/config/).
+4. 组合全部组件 v2.0 20240611
 
-## Project Setup
+## 代码规范
 
-```sh
-npm install
+### Prettier
+
+规范代码格式
+
+1. 文件： .prettierrc,  .prettierigonre
+
+2. jsconfig.json中添加 ：
+
+```
+"scripts": 
+{
+    "_comments": "prettier 配置文件",
+    "format": "prettier --write \"src/**/*.{js,vue,css,scss,html,json,md}\"" 
+},
 ```
 
-### Compile and Hot-Reload for Development
-
-```sh
-npm run dev
-```
-
-### Compile and Minify for Production
-
-```sh
-npm run build
-```
+3. 运行npm run format

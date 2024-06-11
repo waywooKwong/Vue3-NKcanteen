@@ -1,15 +1,14 @@
 <script setup>
-import { useScroll } from '@vueuse/core';
+import { useScroll } from '@vueuse/core'
 
-const { y } = useScroll(window);
+const { y } = useScroll(window)
 
 // 分类数据，包含 ID 和名称
 const categories = [
   { id: 1, name: '我的菜单' },
   { id: 2, name: '我的窗口' },
   { id: 3, name: '我的订单' },
-];
-
+]
 </script>
 
 <template>
@@ -17,21 +16,21 @@ const categories = [
     <div class="container">
       <RouterLink class="logo" to="/" />
       <!-- 导航区域 -->
-      <ul class="app-header-nav ">
+      <ul class="app-header-nav">
         <li class="home">
           <RouterLink to="/admin">首页</RouterLink>
         </li>
         <li v-for="category in categories" :key="category.id">
-          <RouterLink :to="`/admin/category/${category.id}`">{{ category.name }}</RouterLink>
+          <RouterLink :to="`/admin/category/${category.id}`">{{
+            category.name
+          }}</RouterLink>
         </li>
-
       </ul>
     </div>
   </div>
 </template>
 
-
-<style scoped lang='scss'>
+<style scoped lang="scss">
 @import '@/styles/common.scss';
 .app-header-sticky {
   width: 100%;
@@ -62,7 +61,7 @@ const categories = [
   .logo {
     width: 200px;
     height: 80px;
-    background: url("@/assets/images/下载.jpg") no-repeat right 2px;
+    background: url('@/assets/images/下载.jpg') no-repeat right 2px;
     background-size: 160px auto;
   }
 
@@ -116,6 +115,4 @@ const categories = [
     }
   }
 }
-
-
 </style>

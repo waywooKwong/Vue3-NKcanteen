@@ -5,13 +5,10 @@
       <!-- 面包屑 -->
       <div class="bread-container">
         <el-breadcrumb separator=">">
-          
           <el-breadcrumb-item>
-            <router-link :to="{ path: '/admin' }">
-              首页
-            </router-link>
+            <router-link :to="{ path: '/admin' }"> 首页 </router-link>
           </el-breadcrumb-item>
-          
+
           <el-breadcrumb-item>{{ categoryName }}</el-breadcrumb-item>
         </el-breadcrumb>
       </div>
@@ -24,7 +21,7 @@
           <h2>菜单列表</h2>
           <ul>
             <li v-for="(item, index) in menu" :key="index">
-              <img :src="item.image" alt="菜品图片">
+              <img :src="item.image" alt="菜品图片" />
               <div>
                 <div class="name">{{ item.name }}</div>
                 <div class="price">{{ item.price }} 元</div>
@@ -36,13 +33,18 @@
                   删除
                 </el-button>
 
-                <el-button type="primary" @click="showDetailDialog = true; selectedDish = item">
+                <el-button
+                  type="primary"
+                  @click="
+                    showDetailDialog = true,
+                    selectedDish = item
+                  "
+                >
                   <el-icon>
                     <More />
                   </el-icon>
                   详细
                 </el-button>
-
               </div>
             </li>
             <!-- 添加按钮 -->
@@ -53,7 +55,7 @@
         </div>
         <el-dialog v-model="showDetailDialog" title="详细信息" width="500px">
           <div class="Detail-Dialog" v-if="selectedDish">
-            <img :src="selectedDish.image" alt="菜品图片">
+            <img :src="selectedDish.image" alt="菜品图片" />
             <div>
               <div class="name">{{ selectedDish.name }}</div>
               <div class="price">{{ selectedDish.price }} 元</div>
@@ -69,19 +71,29 @@
           </div>
         </el-dialog>
 
-
         <el-dialog v-model="showAddForm" title="添加菜品" width="500">
           <template #footer>
             <div class="add-item-form">
               <form @submit.prevent="addItem">
-                <label>请输入菜品名称：
-                  <input type="text" v-model="newItem.name" placeholder="请输入菜品名称">
+                <label
+                  >请输入菜品名称：
+                  <input
+                    type="text"
+                    v-model="newItem.name"
+                    placeholder="请输入菜品名称"
+                  />
                 </label>
-                <label>请输入菜品价格：
-                  <input type="number" v-model.number="newItem.price" placeholder="请输入菜品价格">
+                <label
+                  >请输入菜品价格：
+                  <input
+                    type="number"
+                    v-model.number="newItem.price"
+                    placeholder="请输入菜品价格"
+                  />
                 </label>
-                <label>请选择菜品图片：
-                  <input type="file" @change="handleFileChange">
+                <label
+                  >请选择菜品图片：
+                  <input type="file" @change="handleFileChange" />
                 </label>
                 <button type="submit">添加</button>
                 <button type="button" @click="showAddForm = false">取消</button>
@@ -91,18 +103,44 @@
         </el-dialog>
       </div>
 
-     <!-- 窗口管理 -->
-     <div v-if="categoryId === '2'" class="window-management">
+      <!-- 窗口管理 -->
+      <div v-if="categoryId === '2'" class="window-management">
         <h2>窗口管理</h2>
         <div>
           <div>
             <div>窗口ID：{{ windowID }}</div>
-            <div>食堂：{{ myWindow.canteen !== null ? myWindow.canteen : 'null' }}</div>
-            <div>楼层：{{ myWindow.floor !== null ? myWindow.floor : 'null' }}</div>
-            <div>负责人电话：{{ myWindow.manager_phone !== null ? myWindow.manager_phone : 'null' }}</div>
-            <div>负责人邮箱：{{ myWindow.manager_email !== null ? myWindow.manager_email : 'null' }}</div>
-            <div>负责人微信：{{ myWindow.manager_wechat !== null ? myWindow.manager_wechat : 'null' }}</div>
-            <div>窗口名称：{{ myWindow.window_name !== null ? myWindow.window_name : 'null' }}</div>
+            <div>
+              食堂：{{ myWindow.canteen !== null ? myWindow.canteen : 'null' }}
+            </div>
+            <div>
+              楼层：{{ myWindow.floor !== null ? myWindow.floor : 'null' }}
+            </div>
+            <div>
+              负责人电话：{{
+                myWindow.manager_phone !== null
+                  ? myWindow.manager_phone
+                  : 'null'
+              }}
+            </div>
+            <div>
+              负责人邮箱：{{
+                myWindow.manager_email !== null
+                  ? myWindow.manager_email
+                  : 'null'
+              }}
+            </div>
+            <div>
+              负责人微信：{{
+                myWindow.manager_wechat !== null
+                  ? myWindow.manager_wechat
+                  : 'null'
+              }}
+            </div>
+            <div>
+              窗口名称：{{
+                myWindow.window_name !== null ? myWindow.window_name : 'null'
+              }}
+            </div>
             <el-button @click="removeWindow(myWindow.window_id)" type="primary">
               <el-icon><Delete /></el-icon>
               删除
@@ -110,10 +148,6 @@
           </div>
         </div>
       </div>
-
-
-
-
 
       <!-- 排队系统 -->
       <div v-if="categoryId === '3'" class="queue-system">
@@ -127,41 +161,39 @@
           </li>
         </ul>
       </div>
-
     </div>
   </div>
 </template>
 
 <script setup>
-import { ref, onMounted ,watch} from 'vue';
-import { useRoute, useRouter } from 'vue-router';
-import axios from 'axios';
+import { ref, onMounted, watch } from 'vue'
+import { useRoute, useRouter } from 'vue-router'
+import axios from 'axios'
 import { useStore } from 'vuex'
-
 
 // 分类数据，包含 ID 和名称
 const categories = [
   { id: 1, name: '我的菜单' },
   { id: 2, name: '我的窗口' },
   { id: 3, name: '我的订单' },
-];
+]
 
 // 菜单数据，使用 ref 创建响应式数据
-const menu = ref([]);
-const orders = ref([]);
-const selectedDish = ref(null);
+const menu = ref([])
+const orders = ref([])
+const selectedDish = ref(null)
 
-const value1 = ref(0);
-const value2 = ref(0);
-const colors = ref(['#99A9BF', '#F7BA2A', '#FF9900']);
+const value1 = ref(0)
+const value2 = ref(0)
+const colors = ref(['#99A9BF', '#F7BA2A', '#FF9900'])
 
-const showAddForm = ref(false);
-const showDetailDialog = ref(false);
-const route = useRoute();
-const router = useRouter();
+const showAddForm = ref(false)
+const showDetailDialog = ref(false)
+const route = useRoute()
+const router = useRouter()
 const store = useStore()
-const categoryId = ref(null);
-const categoryName = ref(null);
+const categoryId = ref(null)
+const categoryName = ref(null)
 
 const windowID = store.state.windowID
 
@@ -171,7 +203,7 @@ const newItem = ref({
   name: '',
   price: 0,
   image: null,
-});
+})
 
 const myWindow = {
   window_id: windowID,
@@ -180,137 +212,150 @@ const myWindow = {
   manager_phone: '',
   manager_email: '',
   manager_wechat: '',
-  window_name: ''
-};
+  window_name: '',
+}
 
 // 获取窗口数据
 function fetchWindows(windowID) {
-  axios.get(`http://localhost:3000/window`, { params: { windowID } })
-    .then(response => {
-      const windowData = response.data;
-      myWindow.window_id = windowData.window_id;
-      myWindow.canteen = windowData.canteen;
-      myWindow.floor = windowData.floor;
-      myWindow.manager_phone = windowData.manager_phone;
-      myWindow.manager_email = windowData.manager_email;
-      myWindow.manager_wechat = windowData.manager_wechat;
-      myWindow.window_name = windowData.window_name;
+  axios
+    .get(`http://localhost:3000/window`, { params: { windowID } })
+    .then((response) => {
+      const windowData = response.data
+      myWindow.window_id = windowData.window_id
+      myWindow.canteen = windowData.canteen
+      myWindow.floor = windowData.floor
+      myWindow.manager_phone = windowData.manager_phone
+      myWindow.manager_email = windowData.manager_email
+      myWindow.manager_wechat = windowData.manager_wechat
+      myWindow.window_name = windowData.window_name
     })
-    .catch(error => {
-      console.error('Failed to fetch window:', error);
-    });
+    .catch((error) => {
+      console.error('Failed to fetch window:', error)
+    })
 }
 
 // 在 onMounted 和 afterEach 中调用 fetchWindows
 onMounted(() => {
-  updateCategoryName(route.params.id);
-  fetchMenu();
+  updateCategoryName(route.params.id)
+  fetchMenu()
   if (categoryId.value === '2') {
-    fetchWindows(windowID);
+    fetchWindows(windowID)
   }
   if (categoryId.value === '3') {
-    fetchOrders();
+    fetchOrders()
   }
-});
+})
 
 router.afterEach((to) => {
   if (to.params.id !== categoryId.value) {
-    updateCategoryName(to.params.id);
+    updateCategoryName(to.params.id)
     if (to.params.id === '2') {
-      fetchWindows(windowID);
+      fetchWindows(windowID)
     }
     if (to.params.id === '3') {
-      fetchOrders();
+      fetchOrders()
     }
   }
-});
-watch(() => route.params.id, (newId) => {
-  if (newId === '2') {
-    fetchWindows(windowID);
+})
+watch(
+  () => route.params.id,
+  (newId) => {
+    if (newId === '2') {
+      fetchWindows(windowID)
+    }
   }
-});
-
+)
 
 // 根据分类 ID 更新分类名称
 function updateCategoryName(id) {
-  categoryId.value = id;
-  const category = categories.find(category => category.id === Number(id));
+  categoryId.value = id
+  const category = categories.find((category) => category.id === Number(id))
   if (category) {
-    categoryName.value = category.name;
+    categoryName.value = category.name
   } else {
-    categoryName.value = "未知分类"; // 如果找不到对应的分类，显示默认名称
+    categoryName.value = '未知分类' // 如果找不到对应的分类，显示默认名称
   }
 }
 
 // 获取菜单数据
 function fetchMenu() {
-  axios.get('http://localhost:3000/dishes', { params: { windowID } }).then(response => {
-    menu.value = response.data;
-  }).catch(error => {
-    console.error('Failed to fetch menu:', error);
-  });
+  axios
+    .get('http://localhost:3000/dishes', { params: { windowID } })
+    .then((response) => {
+      menu.value = response.data
+    })
+    .catch((error) => {
+      console.error('Failed to fetch menu:', error)
+    })
 }
 
 // 获取订单数据
 function fetchOrders() {
-  axios.get(`http://localhost:3000/orders?windowId=${windowID}`).then(response => {
-    orders.value = response.data;
-  }).catch(error => {
-    console.error('Failed to fetch orders:', error);
-  });
+  axios
+    .get(`http://localhost:3000/orders?windowId=${windowID}`)
+    .then((response) => {
+      orders.value = response.data
+    })
+    .catch((error) => {
+      console.error('Failed to fetch orders:', error)
+    })
 }
 
 // 添加菜品方法
 const addItem = () => {
-  const exists = menu.value.some(item => item.name === newItem.value.name);
+  const exists = menu.value.some((item) => item.name === newItem.value.name)
 
   if (exists) {
-    alert('该菜品名称已存在，请输入不同的名称。');
-  }
-  else {
-    const formData = new FormData();
-    formData.append('win_id', newItem.value.win_id);
-    formData.append('name', newItem.value.name);
-    formData.append('price', newItem.value.price);
-    formData.append('image', newItem.value.image);
+    alert('该菜品名称已存在，请输入不同的名称。')
+  } else {
+    const formData = new FormData()
+    formData.append('win_id', newItem.value.win_id)
+    formData.append('name', newItem.value.name)
+    formData.append('price', newItem.value.price)
+    formData.append('image', newItem.value.image)
 
     // 发送 POST 请求到后端
-    axios.post('http://localhost:3000/dishes', formData, {
-      headers: {
-        'Content-Type': 'multipart/form-data'
-      }
-    }).then(response => {
-      console.log(response.data);
-      newItem.value.image = response.data.imageUrl;
-      // 添加完毕后清空表单数据
-      newItem.value = { name: '', price: 0, image: null };
-      showAddForm.value = false; // 关闭表单
-      fetchMenu()
-    }).catch(error => {
-      console.error('There was an error!', error);
-    });
+    axios
+      .post('http://localhost:3000/dishes', formData, {
+        headers: {
+          'Content-Type': 'multipart/form-data',
+        },
+      })
+      .then((response) => {
+        console.log(response.data)
+        newItem.value.image = response.data.imageUrl
+        // 添加完毕后清空表单数据
+        newItem.value = { name: '', price: 0, image: null }
+        showAddForm.value = false // 关闭表单
+        fetchMenu()
+      })
+      .catch((error) => {
+        console.error('There was an error!', error)
+      })
   }
-};
+}
 
 // 删除菜品方法
 const removeItem = (index) => {
-  const dish = menu.value[index];
-  const dishId = dish.id;
-  axios.delete(`http://localhost:3000/dishes_delete`, { data: { id: dishId } }).then(response => {
-    console.log(response.data);
-    menu.value.splice(index, 1); // 从前端列表中移除项目
-  }).catch(error => {
-    console.error('Failed to delete dish:', error);
-    alert('Failed to delete dish. Please try again.');
-  });
-};
+  const dish = menu.value[index]
+  const dishId = dish.id
+  axios
+    .delete(`http://localhost:3000/dishes_delete`, { data: { id: dishId } })
+    .then((response) => {
+      console.log(response.data)
+      menu.value.splice(index, 1) // 从前端列表中移除项目
+    })
+    .catch((error) => {
+      console.error('Failed to delete dish:', error)
+      alert('Failed to delete dish. Please try again.')
+    })
+}
 
 // 处理上传文件变化
 const handleFileChange = (event) => {
-  newItem.value.image = event.target.files[0];
-};
+  newItem.value.image = event.target.files[0]
+}
 </script>
-
 
 <style scoped lang="scss">
 @import '@/styles/common.scss';
