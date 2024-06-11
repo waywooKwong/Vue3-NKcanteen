@@ -41,4 +41,4 @@ export default {
 };
 </script>
 
-<style src = "src/assets/seat.css"></style>
+<style src = "src/assets/seat.css" scoped></style>

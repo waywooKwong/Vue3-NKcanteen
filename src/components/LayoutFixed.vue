@@ -5,9 +5,9 @@ const { y } = useScroll(window);
 
 // 分类数据，包含 ID 和名称
 const categories = [
-  { id: 1, name: '菜单' },
-  { id: 2, name: '活动' },
-  { id: 3, name: '排队' },
+  { id: 1, name: '我的菜单' },
+  { id: 2, name: '我的窗口' },
+  { id: 3, name: '我的订单' },
 ];
 
 </script>
@@ -95,7 +95,7 @@ const categories = [
 
   li {
     margin-right: 40px;
-    width: 38px;
+    width: 70px;
     text-align: center;
 
     a {

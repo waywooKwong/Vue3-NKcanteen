@@ -48,7 +48,7 @@ export default {
             });
         },
         register() {
-            this.$router.push('/register');
+            this.$router.push('/registeruser');
             console.log("hello");
         }
     },
