@@ -12,6 +12,7 @@ import LayoutHome from '@/components/LayoutHome.vue';
 import RegisterAdmin from '@/components/RegisterAdmin.vue';
 import InitAdmin from '@/components/InitAdmin.vue';
 import SelectOpeate from '@/components/SelectOpeate.vue';
+import Order from "@/components/Order.vue";
 const routes = [
     {
         path: '/',
@@ -76,6 +77,10 @@ const routes = [
     {
         path: '/selectopeate',
         component: SelectOpeate
+    },
+    {
+        path: '/order',
+        component: Order
     }
 ]
 

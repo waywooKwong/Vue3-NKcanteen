@@ -7,7 +7,11 @@
         <div class="check-container">
             <input type="checkbox" class="btn_check" v-model="checkbox">
             <label for="checkbox" class="label_check">记住密码</label>
-            <p class="fgPassword" @click="register">点我注册</p>
+            <p class="fgPassword" @click="register">
+                <RouterLink to="/initadmin">点我注册</RouterLink>
+
+                
+            </p>
         </div>
     </div>
 </template>

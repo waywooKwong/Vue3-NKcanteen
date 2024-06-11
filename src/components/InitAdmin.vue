@@ -51,7 +51,7 @@ export default {
             });
         },
         register() {
-            this.$router.push('/register');
+            this.$router.push('/registeradmin');
             console.log("hello");
         }
     },

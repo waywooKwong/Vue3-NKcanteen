@@ -55,7 +55,7 @@ export default {
     },
     selectFloor(floor) {
       this.$router.push({
-        path: "/seat",
+        path: "/selectopeate",
         query: { canteen: this.canteen, floor },
       });
     },
@@ -63,7 +63,7 @@ export default {
 };
 </script>
 
-<style src = "src/assets/seat.css"></style>
+<style src = "src/assets/seat.css" scoped></style>
 <!-- <style scoped>
 #backbody {
   font-family: Avenir, Helvetica, Arial, sans-serif;

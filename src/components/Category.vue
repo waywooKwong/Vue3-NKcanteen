@@ -5,9 +5,13 @@
       <!-- 面包屑 -->
       <div class="bread-container">
         <el-breadcrumb separator=">">
-          <router-link :to="{ path: '/admin' }">
-            <el-breadcrumb-item>首页</el-breadcrumb-item>
-          </router-link>
+          
+          <el-breadcrumb-item>
+            <router-link :to="{ path: '/admin' }">
+              首页
+            </router-link>
+          </el-breadcrumb-item>
+          
           <el-breadcrumb-item>{{ categoryName }}</el-breadcrumb-item>
         </el-breadcrumb>
       </div>
@@ -87,6 +91,30 @@
         </el-dialog>
       </div>
 
+     <!-- 窗口管理 -->
+     <div v-if="categoryId === '2'" class="window-management">
+        <h2>窗口管理</h2>
+        <div>
+          <div>
+            <div>窗口ID：{{ windowID }}</div>
+            <div>食堂：{{ myWindow.canteen !== null ? myWindow.canteen : 'null' }}</div>
+            <div>楼层：{{ myWindow.floor !== null ? myWindow.floor : 'null' }}</div>
+            <div>负责人电话：{{ myWindow.manager_phone !== null ? myWindow.manager_phone : 'null' }}</div>
+            <div>负责人邮箱：{{ myWindow.manager_email !== null ? myWindow.manager_email : 'null' }}</div>
+            <div>负责人微信：{{ myWindow.manager_wechat !== null ? myWindow.manager_wechat : 'null' }}</div>
+            <div>窗口名称：{{ myWindow.window_name !== null ? myWindow.window_name : 'null' }}</div>
+            <el-button @click="removeWindow(myWindow.window_id)" type="primary">
+              <el-icon><Delete /></el-icon>
+              删除
+            </el-button>
+          </div>
+        </div>
+      </div>
+
+
+
+
+
       <!-- 排队系统 -->
       <div v-if="categoryId === '3'" class="queue-system">
         <h2>排队系统</h2>
@@ -105,7 +133,7 @@
 </template>
 
 <script setup>
-import { ref, onMounted } from 'vue';
+import { ref, onMounted ,watch} from 'vue';
 import { useRoute, useRouter } from 'vue-router';
 import axios from 'axios';
 import { useStore } from 'vuex'
@@ -113,9 +141,9 @@ import { useStore } from 'vuex'
 
 // 分类数据，包含 ID 和名称
 const categories = [
-  { id: 1, name: '菜单' },
-  { id: 2, name: '活动' },
-  { id: 3, name: '排队' },
+  { id: 1, name: '我的菜单' },
+  { id: 2, name: '我的窗口' },
+  { id: 3, name: '我的订单' },
 ];
 
 // 菜单数据，使用 ref 创建响应式数据
@@ -145,24 +173,63 @@ const newItem = ref({
   image: null,
 });
 
+const myWindow = {
+  window_id: windowID,
+  canteen: '',
+  floor: 0,
+  manager_phone: '',
+  manager_email: '',
+  manager_wechat: '',
+  window_name: ''
+};
 
+// 获取窗口数据
+function fetchWindows(windowID) {
+  axios.get(`http://localhost:3000/window`, { params: { windowID } })
+    .then(response => {
+      const windowData = response.data;
+      myWindow.window_id = windowData.window_id;
+      myWindow.canteen = windowData.canteen;
+      myWindow.floor = windowData.floor;
+      myWindow.manager_phone = windowData.manager_phone;
+      myWindow.manager_email = windowData.manager_email;
+      myWindow.manager_wechat = windowData.manager_wechat;
+      myWindow.window_name = windowData.window_name;
+    })
+    .catch(error => {
+      console.error('Failed to fetch window:', error);
+    });
+}
+
+// 在 onMounted 和 afterEach 中调用 fetchWindows
 onMounted(() => {
   updateCategoryName(route.params.id);
   fetchMenu();
+  if (categoryId.value === '2') {
+    fetchWindows(windowID);
+  }
   if (categoryId.value === '3') {
     fetchOrders();
   }
 });
 
-// 监听路由参数变化
 router.afterEach((to) => {
   if (to.params.id !== categoryId.value) {
     updateCategoryName(to.params.id);
-    if (categoryId.value === '3') {
+    if (to.params.id === '2') {
+      fetchWindows(windowID);
+    }
+    if (to.params.id === '3') {
       fetchOrders();
     }
   }
 });
+watch(() => route.params.id, (newId) => {
+  if (newId === '2') {
+    fetchWindows(windowID);
+  }
+});
+
 
 // 根据分类 ID 更新分类名称
 function updateCategoryName(id) {

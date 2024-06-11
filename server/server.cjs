@@ -81,16 +81,29 @@ app.post('/addUser', (req, res) => {
 app.post('/addAdmin', (req, res) => {
     const { adminname, password, windowID } = req.body;
 
-    //3. 此处根据需求修改 SQL 语句
-    const sql = 'insert into admin (adminname, password, windowID) values (?, ?, ?)';
-    db.query(sql, [adminname, password, windowID], (err, result) => {
-        if (err) {
-            res.status(500).send({ error: 'Failed to save reservation' });
+    // 1. 首先向 admins 表插入数据
+    const adminSql = 'INSERT INTO admin (adminname, password, windowID) VALUES (?, ?, ?)';
+    db.query(adminSql, [adminname, password, windowID], (adminErr, adminResult) => {
+        if (adminErr) {
+            res.status(500).send({ error: 'Failed to save admin' });
             return;
         }
-        res.json({ success: true, data: result, adminname: adminname, password: password });
+
+        // 2. 如果插入成功，再向 windows 表插入数据
+        const windowSql = 'INSERT INTO windows (window_id) VALUES (?)';
+        db.query(windowSql, [windowID], (windowErr, windowResult) => {
+            if (windowErr) {
+                // 如果向 windows 表插入数据失败，可以在这里处理错误
+                res.status(500).send({ error: 'Failed to save window' });
+                return;
+            }
+
+            // 如果两个表的插入都成功，则返回成功响应
+            res.json({ success: true, data: { admin: adminResult, window: windowResult } });
+        });
     });
 });
+
 
 app.post('/loginuser', (req, res) => {
     const { username, password } = req.body;
@@ -174,7 +187,26 @@ app.get('/dishes', (req, res) => {
     });
   });
   
+// 获取指定窗口数据
+app.get('/window', (req, res) => {
+    const windowID = req.query.windowID;
+  
+    if (!windowID) {
+      res.status(400).send({ error: 'windowID is required' });
+      return;
+    }
+  
+    const sql = 'SELECT * FROM windows WHERE window_id = ?';
+    db.query(sql, [windowID], (err, result) => {
+      if (err) {
+        res.status(500).send({ error: 'Failed to fetch windows' });
+        return;
+      }
+      res.json(result); // 将窗口数据作为 JSON 对象发送回客户端
+    });
+  });
 
+  
 app.get('/orders', (req, res) => {
     const windowId = req.query.windowId;
 
@@ -211,3 +243,75 @@ app.delete('/dishes_delete', (req, res) => {
 app.listen(port, () => {
     console.log(`Server running on http://localhost:${port}`);
 });
+
+
+
+
+
+
+//点菜
+app.get('/windows', (req, res) => {
+    const sql = 'SELECT win_id, GROUP_CONCAT(name SEPARATOR ", ") AS names FROM front_menu GROUP BY win_id ORDER BY win_id';
+    db.query(sql, (err, results) => {
+        if (err) {
+            res.status(500).send({ error: 'Failed to fetch windows' });
+            return;
+        }
+        res.status(200).send(results);
+    });
+});
+
+app.get('/menu_items', (req, res) => {
+    const sql = 'SELECT * FROM front_menu';
+    db.query(sql, (err, results) => {
+        if (err) {
+            res.status(500).send({ error: 'Failed to fetch menu items' });
+            return;
+        }
+        res.status(200).send(results);
+    });
+});
+
+app.post('/order', (req, res) => {
+    const { window, queueNumber, items } = req.body;
+    const sql = 'INSERT INTO orders (window_id, dish_name, quantity, total_price) VALUES (?, ?, ?, ?)';
+
+    db.beginTransaction(err => {
+        if (err) {
+            res.status(500).send({ error: 'Failed to start transaction' });
+            return;
+        }
+
+        const promises = items.map(item => {
+            return new Promise((resolve, reject) => {
+                db.query(sql, [window, item.name, item.quantity, item.totalPrice], (err, result) => {
+                    if (err) {
+                        return reject(err);
+                    }
+                    resolve(result);
+                });
+            });
+        });
+
+        Promise.all(promises)
+            .then(results => {
+                db.commit(err => {
+                    if (err) {
+                        return db.rollback(() => {
+                            res.status(500).send({ error: 'Failed to commit transaction' });
+                        });
+                    }
+                    res.status(201).send({ message: 'Order saved successfully' });
+                });
+            })
+            .catch(err => {
+                db.rollback(() => {
+                    res.status(500).send({ error: 'Failed to save order' });
+                });
+            });
+    });
+});
+
+
+
+

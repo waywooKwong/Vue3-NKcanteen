@@ -44,7 +44,7 @@ export default {
         },
         chooseDish() {
             this.$router.push({
-                path: '/dish',
+                path: '/Order',
                 query: {
                     floor: this.floor,
                     canteen: this.canteen

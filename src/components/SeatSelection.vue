@@ -182,7 +182,7 @@ export default {
 </script>
 
 <!-- 引入外部样式表 -->
-<style src="../assets/seat.css"></style>
+<style src="../assets/seat.css" scoped></style>
 
 <!-- 定义局部样式 -->
 <style scoped>

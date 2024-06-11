@@ -2,9 +2,9 @@
 
 // 分类数据，包含 ID 和名称
 const categories = [
-  { id: 1, name: '菜单' },
-  { id: 2, name: '活动' },
-  { id: 3, name: '排队' },
+  { id: 1, name: '我的菜单' },
+  { id: 2, name: '我的窗口' },
+  { id: 3, name: '我的订单' },
 ];
 </script>
 
@@ -12,7 +12,7 @@ const categories = [
   <header class='app-header'>
     <div class="container">
       <h1 class="logo">
-        <RouterLink to="/">旺旺商城</RouterLink>
+        <RouterLink to="/admin"></RouterLink>
       </h1>
       <ul class="app-header-nav">
         <li class="home">
@@ -24,11 +24,6 @@ const categories = [
         </li>
 
       </ul>
-      <div class="search">
-        <i class="iconfont icon-search"></i>
-        <input type="text" placeholder="搜一搜">
-      </div>
-      <!-- 头部购物车 -->
 
     </div>
   </header>
@@ -66,7 +61,7 @@ const categories = [
 
     li {
       margin-right: 40px;
-      width: 38px;
+      width: 70px;
       text-align: center;
 
       a {
