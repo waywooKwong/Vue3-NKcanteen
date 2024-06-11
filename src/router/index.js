@@ -12,8 +12,11 @@ import LayoutHome from '@/components/LayoutHome.vue';
 import RegisterAdmin from '@/components/RegisterAdmin.vue';
 import InitAdmin from '@/components/InitAdmin.vue';
 import SelectOpeate from '@/components/SelectOpeate.vue';
+<<<<<<< HEAD
 import Order from "@/components/Order.vue";
 
+=======
+>>>>>>> main
 const routes = [
     {
         path: '/',
@@ -54,7 +57,11 @@ const routes = [
     {
         path: '/admin',
         component: Layout,
+<<<<<<< HEAD
 
+=======
+        
+>>>>>>> main
         children: [
             {
                 path: '',
@@ -69,7 +76,11 @@ const routes = [
             }
 
         ],
+<<<<<<< HEAD
         props: true
+=======
+        props: true 
+>>>>>>> main
     },
     {
         path: '/initadmin',
@@ -78,10 +89,13 @@ const routes = [
     {
         path: '/selectopeate',
         component: SelectOpeate
+<<<<<<< HEAD
     },
     {
         path: '/order',
         component: Order
+=======
+>>>>>>> main
     }
 ]
 

@@ -1,4 +1,5 @@
 <template>
+<<<<<<< HEAD
   <div>
     <h2>选择座位</h2>
     <div v-for="group in seatGroups" :key="group.name" class="seat-group">
@@ -11,6 +12,34 @@
     </div>
     <button @click="goToSummary">查看预约</button>
   </div>
+=======
+  <div id="backbody">
+    <div class="scroll-banner">
+      <div class="scroll-content">
+        欢迎来到NKcanteen！最新消息：食堂将于6月10日举行端午节特别活动，敬请期待！
+      </div>
+    </div>
+    <h1>NKcanteen</h1>
+    <h2>选择座位</h2>
+    <div class="container">
+      <div v-for="group in seatGroups" :key="group.name" class="seat-group">
+        <h3>{{ group.name }} 组</h3>
+        <div class="seats">
+          <div v-for="seat in group.seats" :key="seat.number" :class="seatClass(seat)" @click="handleSeatClick(seat)">
+            {{ seat.number }}
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="footer">
+      <p>本楼层负责人：楼层负责人</p>
+      <p>联系方式: 123-456-7890</p>
+      <p>地址: 天津市津南区同砚路38号</p>
+    </div>
+    <button @click="goToSummary">查看预约</button>
+  </div>
+
+>>>>>>> main
 </template>
 
 <script>
@@ -22,10 +51,19 @@ export default {
         { name: 'A', seats: [] },
         { name: 'B', seats: [] },
         { name: 'C', seats: [] },
+<<<<<<< HEAD
         { name: 'D', seats: [] }
       ],
       reservations: [],
       seatsPerGroup: 30 // 可以调整的参数
+=======
+        { name: 'D', seats: [] },
+        { name: 'E', seats: [] },
+        { name: 'F', seats: [] }
+      ],
+      reservations: [],
+      seatsPerGroup: 32 // 可以调整的参数
+>>>>>>> main
     };
   },
   computed: {
@@ -165,6 +203,7 @@ export default {
 };
 </script>
 
+<<<<<<< HEAD
 <style scoped>
 .seat-group {
   margin-bottom: 20px;
@@ -208,10 +247,24 @@ export default {
 
 button {
   margin-top: 20px;
+=======
+<!-- 引入外部样式表 -->
+<style src="../assets/seat.css"></style>
+
+<!-- 定义局部样式 -->
+<style scoped>
+button {
+  margin: 30px;
+>>>>>>> main
   padding: 10px 20px;
   font-size: 16px;
   cursor: pointer;
   border-radius: 8px;
+<<<<<<< HEAD
   color: red;
 }
 </style>
+=======
+}
+</style>
+>>>>>>> main

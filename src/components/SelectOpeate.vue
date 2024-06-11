@@ -44,7 +44,11 @@ export default {
         },
         chooseDish() {
             this.$router.push({
+<<<<<<< HEAD
                 path: '/order',
+=======
+                path: '/dish',
+>>>>>>> main
                 query: {
                     floor: this.floor,
                     canteen: this.canteen

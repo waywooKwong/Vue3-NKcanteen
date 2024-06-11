@@ -11,9 +11,15 @@ const port = 3000; // 这是固定的端口，最好不要修改
 // 2. 根据需求 create table
 const db = mysql.createConnection({
     host: 'localhost',
+<<<<<<< HEAD
     user: 'user',
     password: 'MySQLwd020827',
     database: 'user_schema'
+=======
+    user: 'QT',
+    password: '1234',
+    database: 'dblab01' //注意在 SCHEMAS 确认
+>>>>>>> main
 });
 
 db.connect((err) => {
@@ -113,6 +119,7 @@ app.post('/loginuser', (req, res) => {
 
 app.post('/loginadmin', (req, res) => {
     const { adminname, password } = req.body;
+<<<<<<< HEAD
 
     //3. 此处根据需求修改 SQL 语句
     const sql = 'SELECT windowID FROM admin WHERE adminname = ? AND password = ?';
@@ -128,6 +135,23 @@ app.post('/loginadmin', (req, res) => {
     });
 });
 
+=======
+  
+    //3. 此处根据需求修改 SQL 语句
+    const sql = 'SELECT windowID FROM admin WHERE adminname = ? AND password = ?';
+    db.query(sql, [adminname, password], (err, result) => {
+      if (err) {
+        res.status(500).send({ error: 'Failed to login' });
+        return;
+      } else if (result.length > 0) {
+        res.json({ success: true, windowID: result[0].windowID });
+      } else {
+        res.status(401).json({ success: false, message: 'Invalid username or password' });
+      }
+    });
+  });
+  
+>>>>>>> main
 
 const storage = multer.diskStorage({
     destination: function (req, file, cb) {
@@ -158,6 +182,7 @@ app.post('/dishes', upload.single('image'), (req, res) => {
 //查询当前窗口菜单
 app.get('/dishes', (req, res) => {
     const windowID = req.query.windowID;
+<<<<<<< HEAD
 
     if (!windowID) {
         res.status(400).send({ error: 'windowID is required' });
@@ -174,6 +199,24 @@ app.get('/dishes', (req, res) => {
     });
 });
 
+=======
+    
+    if (!windowID) {
+      res.status(400).send({ error: 'windowID is required' });
+      return;
+    }
+  
+    const sql = 'SELECT * FROM front_menu WHERE win_id = ?';
+    db.query(sql, [windowID], (err, result) => {
+      if (err) {
+        res.status(500).send({ error: 'Failed to fetch menu' });
+        return;
+      }
+      res.json(result); // 将菜品数据作为 JSON 对象发送回客户端
+    });
+  });
+  
+>>>>>>> main
 
 app.get('/orders', (req, res) => {
     const windowId = req.query.windowId;
@@ -208,6 +251,7 @@ app.delete('/dishes_delete', (req, res) => {
     });
 });
 
+<<<<<<< HEAD
 app.get('/windows', (req, res) => {
     const sql = 'SELECT win_id, GROUP_CONCAT(name SEPARATOR ", ") AS names FROM front_menu GROUP BY win_id ORDER BY win_id';
     db.query(sql, (err, results) => {
@@ -271,6 +315,8 @@ app.post('/order', (req, res) => {
 });
 
 
+=======
+>>>>>>> main
 app.listen(port, () => {
     console.log(`Server running on http://localhost:${port}`);
 });
