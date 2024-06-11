@@ -1,4 +1,4 @@
-# vue-project
+# vue_register
 
 This template should help get you started developing with Vue 3 in Vite.
 
@@ -27,21 +27,3 @@ npm run dev
 ```sh
 npm run build
 ```
-## 数据库：
-
-### mysql中创建表：
-
-CREATE TABLE front_menu (
-    win_id VARCHAR(255) NOT NULL,
-    id INT AUTO_INCREMENT PRIMARY KEY,
-    name VARCHAR(255) NOT NULL,
-    price INT NOT NULL,
-    image VARCHAR(255) NOT NULL
-);
-
-CREATE TABLE reservations (
-    id INT AUTO_INCREMENT PRIMARY KEY,
-    window_id VARCHAR(255) NOT NULL,
-    queue_number INT NOT NULL,
-    item_name VARCHAR(255) NOT NULL
-);

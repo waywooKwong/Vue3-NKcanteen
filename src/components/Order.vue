@@ -6,7 +6,8 @@
         <div class="window-selection">
           <label>选择窗口：</label>
           <select v-model="selectedWindow">
-            <option v-for="(window, index) in windows" :value="window.win_id" :key="window.win_id">{{ window.win_id }}
+            <option v-for="(window, index) in windows" :value="window.win_id" :key="window.win_id">
+              {{ window.win_id }}
             </option>
           </select>
         </div>
@@ -15,11 +16,13 @@
           <h3>菜单</h3>
           <ul>
             <li v-for="(item, index) in menuItems" :key="index">
-              <input type="checkbox" :id="'item-' + index" v-model="selectedItems" :value="item.name">
+              <input type="checkbox" :id="'item-' + index" v-model="selectedItems" :value="item">
               <label :for="'item-' + index">
                 <img :src="item.image" alt="" width="50">
                 {{ item.name }} - ￥{{ item.price }}
               </label>
+              <input type="number" v-model.number="item.quantity" :min="1" :disabled="!selectedItems.includes(item)"
+                placeholder="数量">
             </li>
           </ul>
           <button @click="confirmOrder">下单</button>
@@ -31,7 +34,8 @@
         <div v-for="(order, index) in orders" :key="index" class="order">
           <p>订单{{ index + 1 }}：</p>
           <ul>
-            <li v-for="(item, i) in order.items" :key="i">{{ item.name }}</li>
+            <li v-for="(item, i) in order.items" :key="i">{{ item.name }} x {{ item.quantity }} - 总价: ￥{{
+              item.totalPrice }}</li>
           </ul>
           <p>窗口{{ order.window }} 排号：{{ order.queueNumber }}</p>
           <p>{{ order.status }}</p>
@@ -78,6 +82,7 @@ export default {
       axios.get('http://localhost:3000/menu_items')
         .then(response => {
           this.menuItems = response.data.filter(item => item.win_id === win_id);
+          this.menuItems.forEach(item => item.quantity = 1); // 默认数量为1
         })
         .catch(error => {
           console.error('Error fetching menu items:', error);
@@ -94,12 +99,17 @@ export default {
     },
     order() {
       const selectedWindow = this.windows.find(window => window.win_id === this.selectedWindow);
-      const processingTime = 10 * this.selectedItems.length; // 假设每个菜品的处理时间为10秒
+      const selectedItemsWithQuantity = this.selectedItems.map(item => ({
+        name: item.name,
+        quantity: item.quantity,
+        totalPrice: (item.price * item.quantity).toFixed(2)
+      }));
+      const processingTime = 10 * selectedItemsWithQuantity.length; // 假设每个菜品的处理时间为10秒
       const queueNumber = Math.floor(Math.random() * 100) + 1;
 
       const newOrder = {
-        items: this.selectedItems.map(name => ({ name })),
-        window: selectedWindow.name,
+        items: selectedItemsWithQuantity,
+        window: selectedWindow.names,
         queueNumber: queueNumber,
         estimatedTime: new Date(Date.now() + processingTime * 1000).toLocaleTimeString(),
         status: '等待取餐',
@@ -109,10 +119,10 @@ export default {
       this.orders.push(newOrder);
       this.startCountdown(newOrder, processingTime * 1000);
 
-      axios.post('http://localhost:3000/reserve', {
+      axios.post('http://localhost:3000/order', {
         window: this.selectedWindow,
         queueNumber: queueNumber,
-        items: this.selectedItems
+        items: selectedItemsWithQuantity
       })
         .then(response => {
           console.log(response.data.message);
@@ -219,5 +229,10 @@ button {
 
 button:hover {
   background-color: #45a049;
+}
+
+input[type="number"] {
+  margin-left: 10px;
+  width: 50px;
 }
 </style>
