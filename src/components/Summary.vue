@@ -1,11 +1,15 @@
 <template>
   <div class="text">
     <h2>已选择的预约</h2>
-    <div v-for="reservation in reservations" :key="reservation.seat" class="reservation-box">
+    <div
+      v-for="reservation in reservations"
+      :key="reservation.seat"
+      class="reservation-box"
+    >
       <div class="reservation-content">
-        食堂: {{ reservation.canteen }}<br>
-        楼层: {{ reservation.floor }}<br>
-        座位: {{ reservation.seatgroup + reservation.seatnumber }}<br>
+        食堂: {{ reservation.canteen }}<br />
+        楼层: {{ reservation.floor }}<br />
+        座位: {{ reservation.seatgroup + reservation.seatnumber }}<br />
         预约时间: {{ reservation.time }} 分钟
       </div>
     </div>
@@ -17,20 +21,19 @@
 export default {
   data() {
     return {
-      reservations: []
-    };
+      reservations: [],
+    }
   },
   created() {
-    this.reservations = JSON.parse(this.$route.query.reservations || '[]');
-  }
-};
+    this.reservations = JSON.parse(this.$route.query.reservations || '[]')
+  },
+}
 </script>
 <!-- 引入外部样式表 -->
 <style scoped>
 h2 {
   margin-bottom: 10px;
   text-align: center;
-  
 }
 
 .reservation-box {
@@ -58,7 +61,7 @@ h2 {
   white-space: pre-wrap;
   /* 保留空白字符并换行 */
 }
-.text{
+.text {
   text-align: center;
 }
 </style>

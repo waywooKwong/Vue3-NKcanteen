@@ -11,7 +11,7 @@
       <div v-for="canteen in canteens" :key="canteen" class="canteen-item">
         <div class="canteen-content">
           <!-- 图片路径设置要准确！！ -->
-          <img :src="`src/assets/images/canteen/${canteen}.jpg`" alt="加载中"> 
+          <img :src="`src/assets/images/canteen/${canteen}.jpg`" alt="加载中" />
           <button @click="selectCanteen(canteen)">
             {{ canteen }}
           </button>
@@ -31,14 +31,14 @@ export default {
   data() {
     return {
       canteens: ['食堂A', '食堂B', '食堂C'],
-    };
+    }
   },
   methods: {
     selectCanteen(canteen) {
-      this.$router.push({ path: '/floor', query: { canteen } });
-    }
-  }
-};
+      this.$router.push({ path: '/floor', query: { canteen } })
+    },
+  },
+}
 </script>
 
-<style src = "src/assets/seat.css" scoped></style>
+<style src="src/assets/seat.css" scoped></style>

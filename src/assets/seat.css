@@ -11,10 +11,9 @@
   /* background-size: cover;
   background-position: center;
   background-attachment: fixed; 背景图片固定，不随滚动条移动 */
-
 }
 h1 {
-  color: rgb(126,12,110);
+  color: rgb(126, 12, 110);
 }
 
 h2 {
@@ -69,8 +68,8 @@ button {
   border-radius: 8px;
 }
 
-button:hover{
-  background-color:rgb(126,12,110);
+button:hover {
+  background-color: rgb(126, 12, 110);
 }
 
 .scroll-banner {
@@ -100,7 +99,7 @@ button:hover{
 .footer {
   width: 100%;
   background-color: rgba(240, 240, 240, 0.8); /* 半透明背景颜色 */
-  padding: 10px 0; 
+  padding: 10px 0;
   box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.1); /* 阴影效果 */
   position: fixed;
   bottom: 0;
@@ -110,7 +109,6 @@ button:hover{
   font-size: 14px;
   z-index: 1000; /* 确保footer在最上层 */
 }
-
 
 .seat-group {
   flex: 0 0 calc(33.333% - 20px);
@@ -160,4 +158,3 @@ button:hover{
   background-position: center;
   cursor: not-allowed;
 }
-

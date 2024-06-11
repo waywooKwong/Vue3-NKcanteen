@@ -1,15 +1,14 @@
 <script setup>
-
 // 分类数据，包含 ID 和名称
 const categories = [
   { id: 1, name: '我的菜单' },
   { id: 2, name: '我的窗口' },
   { id: 3, name: '我的订单' },
-];
+]
 </script>
 
 <template>
-  <header class='app-header'>
+  <header class="app-header">
     <div class="container">
       <h1 class="logo">
         <RouterLink to="/admin"></RouterLink>
@@ -20,17 +19,16 @@ const categories = [
         </li>
 
         <li v-for="category in categories" :key="category.id">
-          <RouterLink :to="`/admin/category/${category.id}`">{{ category.name }}</RouterLink>
+          <RouterLink :to="`/admin/category/${category.id}`">{{
+            category.name
+          }}</RouterLink>
         </li>
-
       </ul>
-
     </div>
   </header>
 </template>
 
-
-<style scoped lang='scss'>
+<style scoped lang="scss">
 @import '@/styles/common.scss';
 .app-header {
   background: #fff;
@@ -48,7 +46,8 @@ const categories = [
       height: 110px;
       width: 100%;
       text-indent: -9999px;
-      background: url('@/assets/images/下载.jpg') no-repeat center 18px / contain;
+      background: url('@/assets/images/下载.jpg') no-repeat center 18px /
+        contain;
     }
   }
 
@@ -132,5 +131,4 @@ const categories = [
     }
   }
 }
-
 </style>
