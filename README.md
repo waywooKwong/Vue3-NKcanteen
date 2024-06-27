@@ -40,11 +40,16 @@
 
 ***
 最终更新于 2024/6/6
-
+***
+项目汇总以及完成工作相关细节与报告已经汇总至项目策划文档中，本README不再更新。
+***
+最终更新于 2024/6/10
+***
 
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNDg2MDQ4MjIzLDIwMjI2NDc5NDIsLTQzNz
-k5MDg2MSwxMDEyNTA2Nzc5LC0yNjk4MDI2NDRdfQ==
+eyJoaXN0b3J5IjpbMTE5OTE2MzA4OSw0ODYwNDgyMjMsMjAyMj
+Y0Nzk0MiwtNDM3OTkwODYxLDEwMTI1MDY3NzksLTI2OTgwMjY0
+NF19
 -->
